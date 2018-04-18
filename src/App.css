@@ -42,6 +42,7 @@
 
 .results-table{
   font-family: 'Permanent Marker', cursive;
+  margin: .5rem;
 }
 
 th, td {
@@ -53,6 +54,7 @@ th, td {
   width: 10rem;
   height: 10rem;
   border-radius: .5rem;
+  margin: .5rem;
 }
 
 .box {
@@ -84,12 +86,23 @@ th, td {
     flex-direction: column;
   }
 
-  .goatimg{
-    display: none;
+  .results{
+    flex-direction: row;
   }
 
   .Text{
-    order: -1;
+    order: 0;
   }
 
+}
+
+@media (max-width: 450px){
+  .results{
+    flex-direction: column-reverse;
+  }
+
+  .goatimg{
+    width: 100%;
+    height: auto;
+  }
 }

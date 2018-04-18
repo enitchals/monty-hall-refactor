@@ -136,40 +136,40 @@ class App extends Component {
       <div className="container">
       <div className="App">
       <div className="Simulation column">
-      <div className="door-row box">
-        <div className="Door1 door">
-          <div>{(this.state.revealDoor === 1)
-            ? <img className="doorWidth" src={goat}/>
-            : (this.state.secondPick === null)
-              ? <img className="doorWidth" src={door1} onClick={this.pickDoor1}/>
-              : (this.state.prizeDoor === 1)
-                ? <img className="doorWidth" src={prize}/>
-                : <img className="doorWidth" src={goat}/>
-              }</div>
-          </div>
+        <div className="door-row box">
+          <div className="Door1 door">
+            <div>{(this.state.revealDoor === 1)
+              ? <img className="doorWidth" src={goat}/>
+              : (this.state.secondPick === null)
+                ? <img className="doorWidth" src={door1} onClick={this.pickDoor1}/>
+                : (this.state.prizeDoor === 1)
+                  ? <img className="doorWidth" src={prize}/>
+                  : <img className="doorWidth" src={goat}/>
+                }</div>
+            </div>
 
-        <div className="Door2 door">
-          <div>{this.state.revealDoor === 2
-            ? <img className="doorWidth" src={goat}/>
-            : (this.state.secondPick === null)
-              ? <img className="doorWidth" src={door2} onClick={this.pickDoor2}/>
-              : (this.state.prizeDoor === 2)
-                ? <img className="doorWidth" src={prize}/>
-                : <img className="doorWidth" src={goat}/>
-              }</div>
-          </div>
+          <div className="Door2 door">
+            <div>{this.state.revealDoor === 2
+              ? <img className="doorWidth" src={goat}/>
+              : (this.state.secondPick === null)
+                ? <img className="doorWidth" src={door2} onClick={this.pickDoor2}/>
+                : (this.state.prizeDoor === 2)
+                  ? <img className="doorWidth" src={prize}/>
+                  : <img className="doorWidth" src={goat}/>
+                }</div>
+            </div>
 
-        <div className="Door3 door">
-          <div>{this.state.revealDoor === 3
-            ? <img className="doorWidth" src={goat}/>
-            : (this.state.secondPick === null)
-              ? <img className="doorWidth" src={door3} onClick={this.pickDoor3}/>
-              : (this.state.prizeDoor === 3)
-                ? <img className="doorWidth" src={prize}/>
-                : <img className="doorWidth" src={goat} />
-              }</div>
+          <div className="Door3 door">
+            <div>{this.state.revealDoor === 3
+              ? <img className="doorWidth" src={goat}/>
+              : (this.state.secondPick === null)
+                ? <img className="doorWidth" src={door3} onClick={this.pickDoor3}/>
+                : (this.state.prizeDoor === 3)
+                  ? <img className="doorWidth" src={prize}/>
+                  : <img className="doorWidth" src={goat} />
+                }</div>
+            </div>
           </div>
-        </div>
         <div className="Text box">
           <div className="title">Monty Hall Simulator</div>
           {(this.state.firstPick === null)
@@ -192,25 +192,24 @@ class App extends Component {
             : ''}
           </div>
         </div>
-
       </div>
       <div className="results box">
         <img className="goatimg" src={GOAT}/>
         <div className="results-table">
-        <h3>RESULTS:</h3>
-        <tr>
-          <th>&nbsp;</th>
-          <th>stay</th>
-          <th>swap</th>
-        </tr>
-          <th>win</th>
-          <td>{this.state.stayWin}</td>
-          <td>{this.state.switchWin}</td>
-        <tr>
-          <th>lose</th>
-          <td>{this.state.stayLose}</td>
-          <td>{this.state.switchLose}</td>
-        </tr>
+          <h3>RESULTS:</h3>
+          <tr>
+            <th>&nbsp;</th>
+            <th>stay</th>
+            <th>swap</th>
+          </tr>
+            <th>win</th>
+            <td>{this.state.stayWin}</td>
+            <td>{this.state.switchWin}</td>
+          <tr>
+            <th>lose</th>
+            <td>{this.state.stayLose}</td>
+            <td>{this.state.switchLose}</td>
+          </tr>
         </div>
       </div>
       </div>
