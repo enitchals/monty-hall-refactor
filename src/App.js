@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 import Door from './Components/Door.js';
+import Welcome from './Components/Welcome.js';
 
 const door1 = require('./img/door1.jpg');
 const door2 = require('./img/door2.jpg');
@@ -21,7 +22,9 @@ class App extends Component {
       switchLose: 0,
       stayWin: 0,
       stayLose: 0,
+      intro: true,
     }
+    this.beginSim = this.beginSim.bind(this);
     this.assignPrize = this.assignPrize.bind(this);
     this.firstDoorPick = this.firstDoorPick.bind(this);
     this.stayDoor = this.stayDoor.bind(this);
@@ -31,6 +34,12 @@ class App extends Component {
 
   componentDidMount() {
     this.assignPrize();
+  }
+
+
+// BEGIN SIMULATION
+  beginSim = () => {
+    this.setState({intro: false});
   }
 
 // ASSIGNS A PRIZE DOOR
@@ -100,15 +109,19 @@ firstDoorPick = (door) => {
       <div className="container">
       <div className="App">
       <div className="Simulation column">
-        <div className="door-row box">
-        <Door door="1" doorImg = {door1} firstDoorPick = {() => this.firstDoorPick(1)} revealDoor={this.state.revealDoor} secondPick={this.state.secondPick} prizeDoor={this.state.prizeDoor}/>
-        <Door door="2" doorImg = {door2} firstDoorPick = {() => this.firstDoorPick(2)} revealDoor={this.state.revealDoor} secondPick={this.state.secondPick} prizeDoor={this.state.prizeDoor}/>
-        <Door door="3" doorImg = {door3} firstDoorPick = {() => this.firstDoorPick(3)} revealDoor={this.state.revealDoor} secondPick={this.state.secondPick} prizeDoor={this.state.prizeDoor}/>
-          </div>
+        {(this.state.intro)
+          ? null
+          : <div className="door-row box">
+            <Door door="1" doorImg = {door1} firstDoorPick = {() => this.firstDoorPick(1)} revealDoor={this.state.revealDoor} secondPick={this.state.secondPick} prizeDoor={this.state.prizeDoor}/>
+            <Door door="2" doorImg = {door2} firstDoorPick = {() => this.firstDoorPick(2)} revealDoor={this.state.revealDoor} secondPick={this.state.secondPick} prizeDoor={this.state.prizeDoor}/>
+            <Door door="3" doorImg = {door3} firstDoorPick = {() => this.firstDoorPick(3)} revealDoor={this.state.revealDoor} secondPick={this.state.secondPick} prizeDoor={this.state.prizeDoor}/>
+            </div>}
         <div className="Text box">
           <div className="title">Monty Hall Simulator</div>
           {(this.state.firstPick === null)
-            ? <div>Pick a door!<br/><br/></div>
+            ? (this.state.intro)
+              ?<Welcome begin={this.beginSim}/>
+              :<div>Pick a door!<br/><br/></div>
             : (this.state.secondPick === null)
           ? (<div>You picked door {this.state.firstPick}. Monty tells me there's a goat behind door {this.state.revealDoor}. <br/>
             Do you want to STAY or SWAP?</div>)
