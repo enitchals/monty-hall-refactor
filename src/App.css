@@ -50,13 +50,6 @@ th, td {
   font-family: 'Permanent Marker', cursive;
 }
 
-.goatimg{
-  width: 10rem;
-  height: 10rem;
-  border-radius: .5rem;
-  margin: .5rem;
-}
-
 .box {
   border: 3px solid black;
   border-radius: 1rem;
@@ -101,8 +94,4 @@ th, td {
     flex-direction: column-reverse;
   }
 
-  .goatimg{
-    width: 100%;
-    height: auto;
-  }
 }
