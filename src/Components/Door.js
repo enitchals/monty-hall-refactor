@@ -6,23 +6,22 @@ const door3 = require('../img/door3.jpg');
 const goat = require('../img/goat.jpg');
 const prize = require('../img/prize.jpg');
 
-export default class Door extends Component {
-    constructor(props){
-        super(props);
-    }
-    render(props) {
-        console.log(this.props.door);
+function Door(props) {
         return(
             <div className="door">
-                {(this.props.revealDoor == this.props.door)
+                {(props.revealDoor == props.door)
                     ? <img className="doorWidth" src={goat}/>
-                    : (this.props.secondPick === null)
-                        ? <img className="doorWidth" src={this.props.doorImg} onClick={() => this.props.firstDoorPick(this.props.door)}/>
-                        : (this.props.prizeDoor == this.props.door)
+                    : (props.secondPick === null)
+                        ? <img
+                            className="doorWidth" src={props.doorImg}
+                            onClick={() => props.firstDoorPick(props.door)}
+                            />
+                        : (props.prizeDoor == props.door)
                             ? <img className="doorWidth" src={prize}/>
                             : <img className="doorWidth" src={goat}/>
                             }
             </div>
         )
-    }
 }
+
+export default Door;
