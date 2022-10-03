@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import './App.css';
 import Door from './Components/Door.js';
+import Results from './Components/Results.js';
 import Welcome from './Components/Welcome.js';
 
 const door1 = require('./img/door1.jpg');
@@ -122,22 +123,7 @@ function App() {
       </div>
       <div className="results box">
         <img className="goatimg" src={GOAT}/>
-        <div className="results-table">
-          <h3>RESULTS:</h3>
-          <tr>
-            <th>&nbsp;</th>
-            <th>stay</th>
-            <th>swap</th>
-          </tr>
-            <th>win</th>
-            <td>{stayWin}</td>
-            <td>{switchWin}</td>
-          <tr>
-            <th>lose</th>
-            <td>{stayLose}</td>
-            <td>{switchLose}</td>
-          </tr>
-        </div>
+        <Results stayWin={stayWin} switchWin={switchWin} stayLose={stayLose} switchLose={switchLose}/>
       </div>
       </div>
       </div>

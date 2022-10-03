@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React from 'react';
 
 const door1 = require('../img/door1.jpg');
 const door2 = require('../img/door2.jpg');
