@@ -44,12 +44,12 @@ function App() {
     setRevealDoor(options[Math.floor(Math.random()*options.length)])
   };
 
-// CONFIRMS THE USER WANTS TO STICK WITH THEIR ORIGINAL DOOR
+// USER WANTS TO STICK WITH THEIR ORIGINAL DOOR
   const stayDoor = () => {
     setSecondPick(firstPick);
   };
 
-// CONFIRMS THE USER WANTS TO SWITCH TO THE OTHER REMAINING DOOR
+// USER WANTS TO SWITCH TO THE OTHER REMAINING DOOR
   const switchDoor = () => {
     if (firstPick !== 1 && revealDoor !== 1) {setSecondPick(1)};
     if (firstPick !== 2 && revealDoor !== 2) {setSecondPick(2)};
@@ -75,14 +75,13 @@ function App() {
     setSwitchLose(switchLose+1)
   }
 
-// RESET THE SIMULATION
+// RESET SIMULATION
   const reset = () => {
     tally();
     setPrizeDoor(null);
     setFirstPick(null);
     setRevealDoor(null);
     setSecondPick(null);
-    // assignPrize();
   }
 
     return (
