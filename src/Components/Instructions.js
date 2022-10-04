@@ -1,31 +1,33 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import Welcome from './Welcome';
+import { Context } from '../App'
 import '../App.css';
 
 function Instructions(props) {
+  const value = useContext(Context);
     return(
       <div>
           <div className="title">Monty Hall Simulator</div>
-          {(props.firstPick === null)
-            ? (props.intro)
-              ?<Welcome begin={props.beginSim}/>
+          {(value.firstPick === null)
+            ? (value.intro)
+              ?<Welcome begin={value.beginSim}/>
               :<div>Pick a door!<br/><br/></div>
-            : (props.secondPick === null)
-          ? (<div>You picked door {props.firstPick}. Monty tells me there's a goat behind door {props.revealDoor}. <br/>
+            : (value.secondPick === null)
+          ? (<div>You picked door {value.firstPick}. Monty tells me there's a goat behind door {value.revealDoor}. <br/>
             Do you want to STAY or SWAP?</div>)
-          : (props.secondPick === props.prizeDoor)
+          : (value.secondPick === value.prizeDoor)
             ? 'You won!'
             : 'You lost!'}
           <div>
-          {(props.firstPick !== null && props.secondPick === null)
+          {(value.firstPick !== null && value.secondPick === null)
             ? (<div>
-              <button className="buttons" onClick={props.stayDoor}>STAY</button>
-              <button className="buttons" onClick={props.switchDoor}>SWAP</button>
+              <button className="buttons" onClick={value.stayDoor}>STAY</button>
+              <button className="buttons" onClick={value.switchDoor}>SWAP</button>
             </div>
             )
             : ''}
-          {(props.firstPick !== null && props.secondPick !== null)
-            ?<button className="buttons" onClick={props.reset}>TRY AGAIN</button>
+          {(value.firstPick !== null && value.secondPick !== null)
+            ?<button className="buttons" onClick={value.reset}>TRY AGAIN</button>
             : ''}
           </div>
           </div>

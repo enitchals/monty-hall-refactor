@@ -9,8 +9,7 @@ const door2 = require('./img/door2.jpg');
 const door3 = require('./img/door3.jpg');
 const GOAT = require('./img/the-goat.png');
 
-export const DoorsContext = createContext(null);
-export const ResultsContext = createContext(null);
+export const Context = createContext(null);
 
 function App() {
   const [prizeDoor, setPrizeDoor] = useState(null);
@@ -21,7 +20,7 @@ function App() {
   const [switchLose, setSwitchLose] = useState(0);
   const [stayWin, setStayWin] = useState(0);
   const [stayLose, setStayLose] = useState(0);
-  const [intro, setIntro] = useState(false); // don't forget to set this back to true
+  const [intro, setIntro] = useState(true);
 
 
   useEffect(() => {
@@ -29,7 +28,7 @@ function App() {
   });
 
 
-// BEGIN SIMULATION
+// START
   const beginSim = () => {
     setIntro(false);
   }
@@ -87,45 +86,47 @@ function App() {
     setSecondPick(null);
   }
 
-  const doorsContext = {
+  const context = {
+    intro,
+    beginSim,
+    assignPrize,
     prizeDoor,
+    firstDoorPick,
+    firstPick,
     revealDoor,
+    stayDoor,
+    switchDoor,
     secondPick,
-    firstDoorPick
-  }
-
-  const resultsContext = {
     switchWin,
     switchLose,
     stayWin,
-    stayLose
+    stayLose,
+    reset
   }
 
     return (
-      <div className="container">
-      <div className="App">
-      <div className="Simulation column">
-        {(intro)
-          ? null
-          : <div className="door-row box">
-            <DoorsContext.Provider value={doorsContext}>
-              <Door door={1} doorImg = {door1} />
-              <Door door={2} doorImg = {door2} />
-              <Door door={3} doorImg = {door3} />
-            </DoorsContext.Provider>
-            </div>}
-        <div className="Text box">
-          <Instructions firstPick={firstPick} intro={intro} beginSim={beginSim} secondPick={secondPick} revealDoor={revealDoor} prizeDoor={prizeDoor} stayDoor={stayDoor} switchDoor={switchDoor} reset={reset}/>
+      <Context.Provider value={context}>
+        <div className="container">
+        <div className="App">
+        <div className="Simulation column">
+          {(intro)
+            ? null
+            : <div className="door-row box">
+                <Door door={1} doorImg = {door1} />
+                <Door door={2} doorImg = {door2} />
+                <Door door={3} doorImg = {door3} />
+              </div>}
+          <div className="Text box">
+            <Instructions/>
+          </div>
         </div>
-      </div>
-      <div className="results box">
-        <img className="goatimg" src={GOAT}/>
-        <ResultsContext.Provider value={resultsContext}>
-          <Results/>
-        </ResultsContext.Provider>
-      </div>
-      </div>
-      </div>
+        <div className="results box">
+          <img className="goatimg" src={GOAT}/>
+            <Results/>
+        </div>
+        </div>
+        </div>
+      </Context.Provider>
     );
   };
 

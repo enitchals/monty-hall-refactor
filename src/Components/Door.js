@@ -1,11 +1,11 @@
 import React, {useContext} from 'react';
-import { DoorsContext } from '../App'
+import { Context } from '../App'
 
 const goat = require('../img/goat.jpg');
 const prize = require('../img/prize.jpg');
 
 function Door(props) {
-    const value = useContext(DoorsContext);
+    const value = useContext(Context);
     console.log(value)
         return(
             <div className="door">

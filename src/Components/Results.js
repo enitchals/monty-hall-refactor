@@ -1,9 +1,9 @@
 import React, {useContext} from 'react';
-import { ResultsContext } from '../App'
+import { Context } from '../App'
 import '../App.css';
 
 function Results() {
-  const value = useContext(ResultsContext);
+  const value = useContext(Context);
     return(
       <div className="results-table">
       <h3>RESULTS:</h3>
