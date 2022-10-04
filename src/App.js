@@ -91,11 +91,6 @@ function App() {
     prizeDoor,
     revealDoor,
     secondPick,
-    switchWin,
-    switchLose,
-    stayWin,
-    stayLose,
-    intro,
     firstDoorPick
   }
 
