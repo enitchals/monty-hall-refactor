@@ -1,4 +1,6 @@
-import React from 'react';
+import React, {useContext} from 'react';
+
+import { DoorsContext } from '../App'
 
 const door1 = require('../img/door1.jpg');
 const door2 = require('../img/door2.jpg');
@@ -7,16 +9,18 @@ const goat = require('../img/goat.jpg');
 const prize = require('../img/prize.jpg');
 
 function Door(props) {
+    const value = useContext(DoorsContext);
+    console.log(value)
         return(
             <div className="door">
-                {(props.revealDoor == props.door)
+                {(value.revealDoor == props.door)
                     ? <img className="doorWidth" src={goat}/>
-                    : (props.secondPick === null)
+                    : (value.secondPick === null)
                         ? <img
                             className="doorWidth" src={props.doorImg}
-                            onClick={() => props.firstDoorPick(props.door)}
+                            onClick={() => value.firstDoorPick(props.door)}
                             />
-                        : (props.prizeDoor == props.door)
+                        : (value.prizeDoor == props.door)
                             ? <img className="doorWidth" src={prize}/>
                             : <img className="doorWidth" src={goat}/>
                             }

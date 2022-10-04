@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, createContext } from 'react';
 import './App.css';
 import Door from './Components/Door.js';
 import Results from './Components/Results.js';
@@ -8,6 +8,9 @@ const door1 = require('./img/door1.jpg');
 const door2 = require('./img/door2.jpg');
 const door3 = require('./img/door3.jpg');
 const GOAT = require('./img/the-goat.png');
+
+export const DoorsContext = createContext(null);
+export const ResultsContext = createContext(null);
 
 function App() {
   const [prizeDoor, setPrizeDoor] = useState(null);
@@ -84,6 +87,25 @@ function App() {
     setSecondPick(null);
   }
 
+  const doorsContext = {
+    prizeDoor,
+    revealDoor,
+    secondPick,
+    switchWin,
+    switchLose,
+    stayWin,
+    stayLose,
+    intro,
+    firstDoorPick
+  }
+
+  const resultsContext = {
+    switchWin,
+    switchLose,
+    stayWin,
+    stayLose
+  }
+
     return (
       <div className="container">
       <div className="App">
@@ -91,9 +113,11 @@ function App() {
         {(intro)
           ? null
           : <div className="door-row box">
-            <Door door="1" doorImg = {door1} firstDoorPick = {() => firstDoorPick(1)} revealDoor={revealDoor} secondPick={secondPick} prizeDoor={prizeDoor}/>
-            <Door door="2" doorImg = {door2} firstDoorPick = {() => firstDoorPick(2)} revealDoor={revealDoor} secondPick={secondPick} prizeDoor={prizeDoor}/>
-            <Door door="3" doorImg = {door3} firstDoorPick = {() => firstDoorPick(3)} revealDoor={revealDoor} secondPick={secondPick} prizeDoor={prizeDoor}/>
+            <DoorsContext.Provider value={doorsContext}>
+              <Door door="1" doorImg = {door1} />
+              <Door door="2" doorImg = {door2} />
+              <Door door="3" doorImg = {door3} />
+            </DoorsContext.Provider>
             </div>}
         <div className="Text box">
           <div className="title">Monty Hall Simulator</div>
@@ -122,7 +146,9 @@ function App() {
       </div>
       <div className="results box">
         <img className="goatimg" src={GOAT}/>
-        <Results stayWin={stayWin} switchWin={switchWin} stayLose={stayLose} switchLose={switchLose}/>
+        <ResultsContext.Provider value={resultsContext}>
+          <Results/>
+        </ResultsContext.Provider>
       </div>
       </div>
       </div>
