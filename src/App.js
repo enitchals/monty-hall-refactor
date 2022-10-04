@@ -2,7 +2,7 @@ import React, { useState, useEffect, createContext } from 'react';
 import './App.css';
 import Door from './Components/Door.js';
 import Results from './Components/Results.js';
-import Welcome from './Components/Welcome.js';
+import Instructions from './Components/Instructions';
 
 const door1 = require('./img/door1.jpg');
 const door2 = require('./img/door2.jpg');
@@ -115,29 +115,7 @@ function App() {
             </DoorsContext.Provider>
             </div>}
         <div className="Text box">
-          <div className="title">Monty Hall Simulator</div>
-          {(firstPick === null)
-            ? (intro)
-              ?<Welcome begin={beginSim}/>
-              :<div>Pick a door!<br/><br/></div>
-            : (secondPick === null)
-          ? (<div>You picked door {firstPick}. Monty tells me there's a goat behind door {revealDoor}. <br/>
-            Do you want to STAY or SWAP?</div>)
-          : (secondPick === prizeDoor)
-            ? 'You won!'
-            : 'You lost!'}
-          <div>
-          {(firstPick !== null && secondPick === null)
-            ? (<div>
-              <button className="buttons" onClick={stayDoor}>STAY</button>
-              <button className="buttons" onClick={switchDoor}>SWAP</button>
-            </div>
-            )
-            : ''}
-          {(firstPick !== null && secondPick !== null)
-            ?<button className="buttons" onClick={reset}>TRY AGAIN</button>
-            : ''}
-          </div>
+          <Instructions firstPick={firstPick} intro={intro} beginSim={beginSim} secondPick={secondPick} revealDoor={revealDoor} prizeDoor={prizeDoor} stayDoor={stayDoor} switchDoor={switchDoor} reset={reset}/>
         </div>
       </div>
       <div className="results box">
