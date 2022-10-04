@@ -128,10 +128,11 @@ function App() {
             : 'You lost!'}
           <div>
           {(firstPick !== null && secondPick === null)
-            ?<button className="buttons" onClick={stayDoor}>STAY</button>
-            : ''}
-          {(firstPick !== null && secondPick === null)
-            ?<button className="buttons" onClick={switchDoor}>SWAP</button>
+            ? (<div>
+              <button className="buttons" onClick={stayDoor}>STAY</button>
+              <button className="buttons" onClick={switchDoor}>SWAP</button>
+            </div>
+            )
             : ''}
           {(firstPick !== null && secondPick !== null)
             ?<button className="buttons" onClick={reset}>TRY AGAIN</button>

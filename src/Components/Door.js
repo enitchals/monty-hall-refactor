@@ -1,10 +1,6 @@
 import React, {useContext} from 'react';
-
 import { DoorsContext } from '../App'
 
-const door1 = require('../img/door1.jpg');
-const door2 = require('../img/door2.jpg');
-const door3 = require('../img/door3.jpg');
 const goat = require('../img/goat.jpg');
 const prize = require('../img/prize.jpg');
 
