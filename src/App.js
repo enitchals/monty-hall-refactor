@@ -54,9 +54,9 @@ function App() {
 
 // USER WANTS TO SWITCH TO THE OTHER REMAINING DOOR
   const switchDoor = () => {
-    if (firstPick !== 1 && revealDoor !== 1) {setSecondPick(1)};
-    if (firstPick !== 2 && revealDoor !== 2) {setSecondPick(2)};
-    if (firstPick !== 3 && revealDoor !== 3) {setSecondPick(3)};
+    const doors = [1,2,3];
+    const remainingDoor = doors.filter(n => n !== firstPick && n !== revealDoor)[0]
+    setSecondPick(remainingDoor)
   };
 
 // TALLY THE RESULTS OF THIS ROUND
@@ -114,9 +114,9 @@ function App() {
           ? null
           : <div className="door-row box">
             <DoorsContext.Provider value={doorsContext}>
-              <Door door="1" doorImg = {door1} />
-              <Door door="2" doorImg = {door2} />
-              <Door door="3" doorImg = {door3} />
+              <Door door={1} doorImg = {door1} />
+              <Door door={2} doorImg = {door2} />
+              <Door door={3} doorImg = {door3} />
             </DoorsContext.Provider>
             </div>}
         <div className="Text box">
